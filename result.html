@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>今回の点数</title>
+</head>
+<body onload="start()">
+<h1>今回の点数は</h1>
+<p id="result">ロード中</p>
+<input type="number" id="data" value="">
+<button onclick="send()">送信</button>
+<style>
+body{
+font-family:Arial;
+margin:0;
+padding:0;
+}
+</style>
+<script>
+branch = "load";
+function send(){
+var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
+var data = [];
+data.push(document.getElementById("data").value);
+var params = {
+"method":"post",
+"mode":"no-cors",
+"Content-Type":"application/json",
+"body":JSON.stringify(data)
+}
+fetch(url,params);
+location.href = "result.html";
+}
+function start(){
+//ani();
+var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
+fetch(url,{
+"method":"get",
+"mode":"cors"
+})
+.then(response =>{
+if(response.ok){
+return response.json();
+}
+})
+.then(json =>{
+branch = "fin"
+ document.getElementById("result").innerHTML = json[0]+"点です！";
+})
+.catch(error =>{
+alert(error);
+})
+}
+function ani(){
+if(branch == "load"){
+document.getElementById("result").innerHTML = "ロード中";
+
+
+}else{
+
+}
+}
+</script>
+</body>
+</html>
