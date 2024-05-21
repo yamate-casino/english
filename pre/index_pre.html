@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>今回の点数</title>
+</head>
+<body onload="start()">
+<div class="b1">
+<h1>Today's Score</h1>
+<p id="p1">></p>
+<p id="p2">></p>
+<p id="p3">></p>
+<p id="result" class="result"></p>
+</div>
+<input type="number" id="data" value="">
+<button onclick="send()">送信</button>
+<style>
+body{
+font-family:Arial;
+margin:0;
+padding:0;
+}
+.b1{
+position:relative;
+left:10vw;
+top:0;
+width:80vw;
+height:15vh;
+background-color:white;
+}
+.b1 p{
+position:absolute;
+left:30vw;
+bottom:0;
+margin:0;
+padding:0;
+height:5vh;
+line-height:5vh;
+display:inline-block;
+font-size:20px;
+}
+.b1 h1{
+position:absolute;
+bottom:0;
+left:0;
+height:5vh;
+line-height:5vh;
+width:25vw;
+font-weight:400;
+text-align:center;
+border-bottom:1px solid black;
+font-size:20px;
+margin:0;
+padding:0;
+}
+.b1 .result{
+ position:absolute;
+ left:55vw;
+bottom:0;
+height:5vh;
+line-height:5vh;
+width:0vw;
+text-align:center;
+border-bottom:1px solid black;
+font-size:20px;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+
+function ani(){
+$("#p1").animate({
+ "left":"55vw"
+},1000);
+
+$("#p2").animate({
+ "left":"55vw"
+},1250);
+
+$("#p3").animate({
+ "left":"55vw"
+},1500);
+$("#result").animate({
+ "width":0,
+ "left":"62.5vw"
+},1500)
+$("#result").animate({
+ "width":"25vw",
+ "left":"55vw"
+},1000)
+setTimeout(()=>{
+document.getElementById("result").innerHTML = data;
+},2700)
+}
+branch = "load";
+function send(){
+var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
+var data = [];
+data.push(document.getElementById("data").value);
+var params = {
+"method":"post",
+"mode":"no-cors",
+"Content-Type":"application/json",
+"body":JSON.stringify(data)
+}
+fetch(url,params);
+ setTimeout(()=>{
+location.href = "index.html";
+ },2000);
+}
+data = "";
+function start(){
+ani();
+var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
+fetch(url,{
+"method":"get",
+"mode":"cors"
+})
+.then(response =>{
+if(response.ok){
+return response.json();
+}
+})
+.then(json =>{
+branch = "fin"
+ data = json[0];
+})
+.catch(error =>{
+alert(error);
+})
+}
+
+</script>
+</body>
+</html>
