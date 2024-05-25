@@ -1,0 +1,252 @@
+body{
+    font-family:Arial;
+    margin:0;
+    padding:0;
+    background-color: #e6e6e6;
+    /*background-color: rgb(240, 248, 255);*/
+    }
+    h1{
+        position:absolute;
+        left:10vw;
+        bottom:0;
+        width: 25vw;
+        height:8vh;
+        line-height:8vh;
+        text-align:center;
+        padding:0;
+        
+        margin: 0;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        /*border-bottom: 1px solid black;*/
+        
+    }
+    .top{
+     position:relative;
+     height:10vh;
+     /*background-color: aliceblue;*/
+    }
+    .top p{
+        position:absolute;
+        bottom:0;
+        left:35vw;
+        height:8vh;
+        line-height: 8vh;
+        margin:0;
+        font-weight: 400;
+        font-size:30px;
+        display: inline-block;
+    }
+    .top .result{
+        position:absolute;
+        bottom:0;
+        left:65vw;
+        width:0;
+        height:8vh;
+        line-height:8vh;
+        margin:0;
+        padding:0;
+        text-align: center;
+        border-bottom:1px solid black;
+        
+        color:#e6e6e6;
+    }
+    .bar1{
+        position:relative;
+        left:10vw;
+        top:5vh;
+        width:80vw;
+        height:80vh;
+        border-radius:20px;
+        background-color: white;
+        box-shadow: 0 0 10px 2px #e6e6e6;
+    }
+    .bar1 .bar2{
+        position:absolute;
+        bottom:0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        width:80vw;
+        height:57.5vh;
+        background-color:rgb(32, 32, 129);
+        opacity: 0;
+    }
+    .bar1 .bar2 h1{
+        position:absolute;
+        top:10px;
+        left:20px;
+        color:white;
+        width:fit-content;
+        font-size:25px;
+        height:50px;
+        line-height:50px;
+        padding-left:10px;
+        border-left:10px solid white;
+        font-weight: 600;
+    }
+    .bar1 .bar2 .bar3{
+      position:absolute;
+      top:65px;
+      left:50px;
+      width:40vw;
+      height:50vh;
+      
+    }
+    .bar1 .bar2 .bar3 p{
+        width:300px;
+        color:white;
+        font-weight:600;
+        padding-left: 10px;
+        letter-spacing: 1.1px;
+    }
+    .bar1 .bar2 .bar3 input{
+        width:300px;
+        height:50px;
+        outline:none;
+        border:none;
+        padding-left: 10px;
+        background-color: white;
+        font-weight: 600;
+        letter-spacing: 1.1px;;
+    }
+    .bar1 .bar2 .bar3 .sub{
+        width:150px;
+        height:50px;
+        margin-top:45px;
+        text-align:center;
+        line-height:50px;
+        background-color: white;
+        color:rgb(32, 32, 129);
+        font-weight: 600;
+    }
+    .bar1 .bar2 .bar3 .sub:hover{
+        background-color: rgb(32, 32, 129);
+        border: 1px solid white;
+        color:white;
+    }
+    .bar1 .bar2 .bar3 .sub:active{
+        background-color: white;
+        color:rgb(32, 32, 129);
+    }
+    .bar1 .bar2 .bar4{
+        position:absolute;
+        top:65px;
+        right:50px;
+        width:40vw;
+        height:45vh;
+        padding:10px;
+        color:white;
+        border:1px solid white;
+    }
+    .bar1 .bar2 .bar4 p{
+        width:300px;
+        color:white;
+        font-weight:600;
+        padding-left: 10px;
+        letter-spacing: 1.1px;
+    }
+    .bar1 .bar2 .bar4 input{
+        width:300px;
+        height:50px;
+        outline:none;
+        border:none;
+        padding-left: 10px;
+        background-color: white;
+        font-weight: 600;
+        letter-spacing: 1.1px;;
+    }
+    .list{
+        position: relative;
+        width:425px;
+        height: 175px;
+        margin:10px;
+        background-color: rgb(240, 248, 255);
+        display: inline-block;
+    }
+    .list p{
+position:absolute;
+top:5px;
+left:60px;
+font-size:20px;
+    }
+    .list small{
+        position:absolute;
+        top:60px;
+        left:100px;
+        color:grey;
+            }
+            .list .bt1{
+                position:absolute;
+                bottom:10px;
+                left:100px;
+                padding-top:15px;
+                padding-bottom:15px;
+                padding-left:20px;
+                padding-right:20px;
+                background-color:rgb(32, 32, 129);
+                color:white;
+                    }
+                    .list .bt1:hover{
+                      background-color: rgb(96, 96, 185);
+                    }
+                    .list .bt1:active{
+                        background-color: rgb(13, 13, 86);
+                      }
+
+    
+                      .s{
+                        position:relative;
+                        top:50vh;
+                        left:50%;
+                        
+                        margin-left:-50px;
+                        margin-top:-50px;
+                        width:100px;
+                        height:100px;
+                        font-family: Arial;
+                    }
+                    .c5{
+                        position:absolute;
+                        bottom:0;
+                        width:100px;
+                        height:100px;
+                        text-align: center;
+                        line-height: 100px;
+                        color:white;
+                        font-size:10px;
+                    }
+                      .s1{
+                        display: none;
+                        opacity: 0;
+                      }
+
+                      .c1{
+                        position:absolute;
+                        top:0;
+                        width:100px;
+                        
+                        border-top:2.5px solid white;
+                    }
+                    .c2{
+                        position:absolute;
+                        bottom:0;
+                        width:100px;
+                        
+                        
+                        border-top:2.5px solid white;
+                    }
+                    .c3{
+                        position:absolute;
+                        right:0;
+                        width:100px;
+                        
+                        border-right:2.5px solid white;
+                    }
+                    .c4{
+                        position:absolute;
+                        left:0;
+                        width:100px;
+                        
+                        border-left:2.5px solid white;
+                    }
+          

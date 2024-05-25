@@ -2,39 +2,186 @@
 <html>
 <head>
  <meta charset="utf-8">
- <title>今回の点数</title>
+ <title>Engish</title>
+ <link rel="stylesheet" href="index.css">
 </head>
 <body onload="start()">
-<h1>今回の点数は</h1>
-<p id="result">ロード中</p>
-<input type="number" id="data" value="">
-<button onclick="send()">送信</button>
-<style>
-body{
-font-family:Arial;
-margin:0;
-padding:0;
-}
-</style>
+    <div class="s" id="s">
+            <div class="c1" id="c1"></div>
+            <div class="c2" id="c2"></div>
+            <div class="c3" id="c3"></div>
+            <div class="c4" id="c4"></div>
+            <div class="c5" id="c5">Loading</div>
+    </div>
+    <div class="s1" id="s1">
+            
+
+    <div class="top" id="top">
+
+        <h1>Engish Score</h1>
+        <!--p id="p1">></p>
+        <p id="p2">></p>
+        <p id="p3">></p>
+        <p id="result" class="result">Loading</p-->
+    </div>
+    <div class="bar1" id="bar1">
+    <div class="list" id="list">
+        <p>Submit Today's Score</p>
+        <small>On this page you can submit today's scores</small>
+        <div class="bt1" id="bt1">Go to page</div>
+     </div>
+     <div class="list" id="list">
+        <p>Past scores</p>
+        <small>You can browse past scores on this page.</small>
+        <div class="bt1" id="bt1">Coming Soon</div>
+     </div>
+     <div class="bar2" id="bar2">
+        <h1>Submit Today's Score</h1>
+         <div class="bar3" id="bar3">
+           <p>Your Name</p>
+           <input type="text" id="name" value="" placeholder="Fill out your Name">
+           <p>Your Number</p>
+           <input type="number" id="number" value="" placeholder="Fill out your Number">
+           <p>Your Score</p>
+           <input type="number" id="score" value="" placeholder="Fill out your score">
+           <div class="sub" id="sub">Submit</div>
+         </div>
+         <div class="bar4" id="bar4">
+             <h3>Example</h3>
+             <p>Your Name</p>
+             <input type="text" id="name" value="Yamate Taro" placeholder="Fill out your Name">
+             <p>Your Number</p>
+             <input type="number" id="number" value="1" placeholder="Fill out your Number">
+             <p>Your Score</p>
+             <input type="number" id="score" value="10" placeholder="Fill out your score">
+         </div>
+     </div>
+    </div>
+
+
+
+
+<!--input type="number" id="data" value="">
+<button onclick="send()">送信</button-->
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
 <script>
 branch = "load";
-function send(){
+bt1_c = 0;
+document.getElementById("bt1").addEventListener('click',()=>{
+    bt1_c++;
+    if(bt1_c == 1){
+    document.getElementById("bt1").innerHTML = "Now Showing";
+    document.getElementById("bar2").style.opacity = "1";
+
+    }else{
+        bt1_c = 0;
+        document.getElementById("bt1").innerHTML = "Go to page";
+    document.getElementById("bar2").style.opacity = "0";
+    }
+})
+document.getElementById("sub").addEventListener('click',()=>{
+    pre_send();
+})
+function pre_send(){
+    var datas = [];
+    var name = document.getElementById("name").value;
+    var number = document.getElementById("number").value;
+    var score = document.getElementById("score").value;
+    if(name.length == 0 && number.length == 0 && score.length == 0){
+    document.getElementById("name").style.outline = "solid";
+    document.getElementById("number").style.outline = "solid";
+    document.getElementById("score").style.outline = "solid";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(name.length == 0 && number.length == 0){
+        document.getElementById("name").style.outline = "solid";
+document.getElementById("number").style.outline = "solid";
+document.getElementById("score").style.outline = "none";
+document.getElementById("name").style.outlineColor = "red";
+document.getElementById("number").style.outlineColor = "red";
+    }else if(number.length == 0 && score.length == 0){
+        document.getElementById("name").style.outline = "none";
+    document.getElementById("number").style.outline = "solid";
+    document.getElementById("score").style.outline = "solid";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(name.length == 0 && score.length == 0){
+        document.getElementById("name").style.outline = "solid";
+    document.getElementById("number").style.outline = "none";
+    document.getElementById("score").style.outline = "solid";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(name.length == 0){
+        document.getElementById("name").style.outline = "solid";
+    document.getElementById("number").style.outline = "none";
+    document.getElementById("score").style.outline = "none";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(number.length == 0){
+        document.getElementById("name").style.outline = "none";
+    document.getElementById("number").style.outline = "solid";
+    document.getElementById("score").style.outline = "none";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(score.length == 0){
+        document.getElementById("name").style.outline = "none";
+    document.getElementById("number").style.outline = "none";
+    document.getElementById("score").style.outline = "solid";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else{
+       datas.push(name);
+       datas.push(number);
+       datas.push(score);
+    pre_send2(datas);
+    }
+    }
+function pre_send2(datas){
+    var number = datas[1];
+    number = parseInt(number)-1
+    var name= datas[0];
+    var ndata = ndatas[number];
+    if(ndata == name){
+      send(datas);
+    }else{
+        alert("氏名と出席番号が一致していません")
+    }
+}
+
+function send(data){
+    document.getElementById("sub").innerHTML = "Sending..."
 var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
-var data = [];
-data.push(document.getElementById("data").value);
 var params = {
 "method":"post",
 "mode":"no-cors",
 "Content-Type":"application/json",
 "body":JSON.stringify(data)
 }
+console.log(params);
 fetch(url,params);
  setTimeout(()=>{
 location.href = "index.html";
  },2000);
 }
+ndatas = '';
 function start(){
-//ani();
+    var width = 	document.body.scrollWidth;
+    if(width > 1150){
+       }   else{
+        alert("画面サイズへ対応していません");
+        alert("ブラウザの設定よりサイズを縮小して閲覧してください");
+    }
+ani();
 var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
 fetch(url,{
 "method":"get",
@@ -46,22 +193,103 @@ return response.json();
 }
 })
 .then(json =>{
-branch = "fin"
- document.getElementById("result").innerHTML = json[0]+"点です！";
+branch = "1"
+ndatas = json;
+ 
 })
 .catch(error =>{
 alert(error);
 })
+    
 }
+
 function ani(){
-if(branch == "load"){
-document.getElementById("result").innerHTML = "ロード中";
-
-
-}else{
-
+    $("#c5").animate({
+        'opacity':0
+      },500)    
+      $("#c5").animate({
+        'opacity':1
+      },500)    
+    $("#c1").animate({
+        'width':0,
+        'left':0,
+      },0)
+      $("#c2").animate({
+        'width':0,
+        'left':'100px'
+      },0)
+      $("#c3").animate({
+        'height':0,
+        'top':0
+      },0)
+      $("#c4").animate({
+        'height':0,
+        'top':'100px'
+      },0)
+      $("#c1").animate({
+        'width':'100px'
+      },1000)
+      $("#c2").animate({
+        'width':'100px',
+        'left':'0vw'
+      },1000)
+      $("#c3").animate({
+        'height':'100px'
+      },1000)
+      $("#c4").animate({
+        'height':'100px',
+        'top':'0vw'
+      },1000)
+      if(branch  == 1){
+        $("#s").animate({
+            'opacity':0
+          },4000)    
+      setTimeout(()=>{
+        document.getElementById("s").style.display = "none";
+        document.getElementById("s1").style.display = "block";
+        document.getElementById("s1").style.opacity = "1";
+                  },4000)
+              }else{
+                setTimeout(ani2,1000);
+              }
 }
+function ani2(){
+    $("#c5").animate({
+        'opacity':0
+      },500)    
+      $("#c5").animate({
+        'opacity':1
+      },500)    
+    $("#c1").animate({
+        'width':'0vw',
+        'left':'100px'
+      },1000)
+      $("#c2").animate({
+        'width':'0vw',
+      },1000)
+      $("#c3").animate({
+        'height':'0vh',
+        'top':'100px'
+      },1000)
+      $("#c4").animate({
+        'height':'0vh'
+      },1000)
+      if(branch  == 1){
+        $("#s").animate({
+            'opacity':0
+          },2000)    
+          setTimeout(()=>{
+document.getElementById("s").style.display = "none";
+document.getElementById("s1").style.display = "block";
+document.getElementById("s1").style.opacity = "1";
+          },2000)
+      }else{
+      setTimeout(ani,1000)
+      }
 }
+
+
+
 </script>
 </body>
 </html>
