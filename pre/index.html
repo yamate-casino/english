@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>Engish</title>
+ <link rel="stylesheet" href="index.css">
+</head>
+<body onload="start()">
+    <div class="top" id="top">
+        <h1>Today's Score</h1>
+        <p id="p1">></p>
+        <p id="p2">></p>
+        <p id="p3">></p>
+        <p id="result" class="result">Loading</p>
+    </div>
+    <div class="bar1" id="bar1">
+    <div class="list" id="list">
+        <p>Submit Today's Score</p>
+        <small>On this page you can submit today's scores</small>
+        <div class="bt1" id="bt1">Go to page</div>
+     </div>
+     <div class="list" id="list">
+        <p>Past scores</p>
+        <small>You can browse past scores on this page.</small>
+        <div class="bt1" id="bt1">Coming Soon</div>
+     </div>
+     <div class="bar2" id="bar2">
+        <h1>Submit Today's Score</h1>
+         <div class="bar3" id="bar3">
+           <p>Your Name</p>
+           <input type="text" id="name" value="" placeholder="Fill out your Name">
+           <p>Your Number</p>
+           <input type="number" id="number" value="" placeholder="Fill out your Number">
+           <p>Your Score</p>
+           <input type="number" id="score" value="" placeholder="Fill out your score">
+           <div class="sub" id="sub">Submit</div>
+         </div>
+         <div class="bar4" id="bar4">
+             <h3>Example</h3>
+             <p>Your Name</p>
+             <input type="text" id="name" value="Yamate Taro" placeholder="Fill out your Name">
+             <p>Your Number</p>
+             <input type="number" id="number" value="1" placeholder="Fill out your Number">
+             <p>Your Score</p>
+             <input type="number" id="score" value="10" placeholder="Fill out your score">
+         </div>
+     </div>
+    </div>
+
+
+
+
+<!--input type="number" id="data" value="">
+<button onclick="send()">送信</button-->
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+<script>
+branch = "load";
+bt1_c = 0;
+document.getElementById("bt1").addEventListener('click',()=>{
+    bt1_c++;
+    if(bt1_c == 1){
+    document.getElementById("bt1").innerHTML = "Now Showing";
+    document.getElementById("bar2").style.opacity = "1";
+
+    }else{
+        bt1_c = 0;
+        document.getElementById("bt1").innerHTML = "Go to page";
+    document.getElementById("bar2").style.opacity = "0";
+    }
+})
+document.getElementById("sub").addEventListener('click',()=>{
+    pre_send();
+})
+function pre_send(){
+    var datas = [];
+    var name = document.getElementById("name").value;
+    var number = document.getElementById("number").value;
+    var score = document.getElementById("score").value;
+    if(name.length == 0 && number.length == 0 && score.length == 0){
+    document.getElementById("name").style.outline = "solid";
+    document.getElementById("number").style.outline = "solid";
+    document.getElementById("score").style.outline = "solid";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(name.length == 0 && number.length == 0){
+        document.getElementById("name").style.outline = "solid";
+document.getElementById("number").style.outline = "solid";
+document.getElementById("score").style.outline = "none";
+document.getElementById("name").style.outlineColor = "red";
+document.getElementById("number").style.outlineColor = "red";
+    }else if(number.length == 0 && score.length == 0){
+        document.getElementById("name").style.outline = "none";
+    document.getElementById("number").style.outline = "solid";
+    document.getElementById("score").style.outline = "solid";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(name.length == 0 && score.length == 0){
+        document.getElementById("name").style.outline = "solid";
+    document.getElementById("number").style.outline = "none";
+    document.getElementById("score").style.outline = "solid";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(name.length == 0){
+        document.getElementById("name").style.outline = "solid";
+    document.getElementById("number").style.outline = "none";
+    document.getElementById("score").style.outline = "none";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(number.length == 0){
+        document.getElementById("name").style.outline = "none";
+    document.getElementById("number").style.outline = "solid";
+    document.getElementById("score").style.outline = "none";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else if(score.length == 0){
+        document.getElementById("name").style.outline = "none";
+    document.getElementById("number").style.outline = "none";
+    document.getElementById("score").style.outline = "solid";
+    document.getElementById("name").style.outlineColor = "red";
+    document.getElementById("number").style.outlineColor = "red";
+    document.getElementById("score").style.outlineColor = "red";
+    }else{
+       datas.push(name);
+       datas.push(number);
+       datas.push(score);
+    send(datas);
+    }
+    }
+
+
+function send(data){
+var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
+var params = {
+"method":"post",
+"mode":"no-cors",
+"Content-Type":"application/json",
+"body":JSON.stringify(data)
+}
+console.log(params);
+fetch(url,params);
+ setTimeout(()=>{
+location.href = "index.html";
+ },2000);
+}
+function start(){
+ani();
+var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
+fetch(url,{
+"method":"get",
+"mode":"cors"
+})
+.then(response =>{
+if(response.ok){
+return response.json();
+}
+})
+.then(json =>{
+branch = "fin"
+ ani2(json);
+})
+.catch(error =>{
+alert(error);
+})
+}
+function ani(){
+$("#p1").animate({
+    "left":'60vw'
+},1000)
+$("#p2").animate({
+    "left":'60vw'
+},1250)
+$("#p3").animate({
+    "left":'60vw'
+},1500)
+}
+function ani2(json){
+    $("#result").animate({
+        'left':'70vw'
+    },0)
+    $("#result").animate({
+        'width':'10vw',
+        'left':'65vw'
+    },1000)
+    setTimeout(()=>{
+        document.getElementById("result").innerHTML = json[0];
+    document.getElementById("result").style.color = "black";
+    },1000)
+    
+}
+</script>
+</body>
+</html>
