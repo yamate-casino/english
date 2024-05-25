@@ -6,12 +6,23 @@
  <link rel="stylesheet" href="index.css">
 </head>
 <body onload="start()">
+    <div class="s" id="s">
+            <div class="c1" id="c1"></div>
+            <div class="c2" id="c2"></div>
+            <div class="c3" id="c3"></div>
+            <div class="c4" id="c4"></div>
+            <div class="c5" id="c5">Loading</div>
+    </div>
+    <div class="s1" id="s1">
+            
+
     <div class="top" id="top">
-        <h1>Today's Score</h1>
-        <p id="p1">></p>
+
+        <h1>Engish Score</h1>
+        <!--p id="p1">></p>
         <p id="p2">></p>
         <p id="p3">></p>
-        <p id="result" class="result">Loading</p>
+        <p id="result" class="result">Loading</p-->
     </div>
     <div class="bar1" id="bar1">
     <div class="list" id="list">
@@ -52,7 +63,7 @@
 
 <!--input type="number" id="data" value="">
 <button onclick="send()">送信</button-->
-
+</div>
 <script
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -132,12 +143,23 @@ document.getElementById("number").style.outlineColor = "red";
        datas.push(name);
        datas.push(number);
        datas.push(score);
-    send(datas);
+    pre_send2(datas);
     }
     }
-
+function pre_send2(datas){
+    var number = datas[1];
+    number = parseInt(number)-1
+    var name= datas[0];
+    var ndata = ndatas[number];
+    if(ndata == name){
+      send(datas);
+    }else{
+        alert("氏名と出席番号が一致していません")
+    }
+}
 
 function send(data){
+    document.getElementById("sub").innerHTML = "Sending..."
 var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
 var params = {
 "method":"post",
@@ -151,6 +173,7 @@ fetch(url,params);
 location.href = "index.html";
  },2000);
 }
+ndatas = '';
 function start(){
 ani();
 var url = "https://script.google.com/macros/s/AKfycbw2PMoYpc49K-Lat0yRkrR_108YKhmAhfqRZ-qQgmdngYfdCikKlYibrlnQbhOFPOuVjQ/exec";
@@ -164,38 +187,102 @@ return response.json();
 }
 })
 .then(json =>{
-branch = "fin"
- ani2(json);
+branch = "1"
+ndatas = json;
+ 
 })
 .catch(error =>{
 alert(error);
 })
 }
+
 function ani(){
-$("#p1").animate({
-    "left":'60vw'
-},1000)
-$("#p2").animate({
-    "left":'60vw'
-},1250)
-$("#p3").animate({
-    "left":'60vw'
-},1500)
+    $("#c5").animate({
+        'opacity':0
+      },500)    
+      $("#c5").animate({
+        'opacity':1
+      },500)    
+    $("#c1").animate({
+        'width':0,
+        'left':0,
+      },0)
+      $("#c2").animate({
+        'width':0,
+        'left':'100px'
+      },0)
+      $("#c3").animate({
+        'height':0,
+        'top':0
+      },0)
+      $("#c4").animate({
+        'height':0,
+        'top':'100px'
+      },0)
+      $("#c1").animate({
+        'width':'100px'
+      },1000)
+      $("#c2").animate({
+        'width':'100px',
+        'left':'0vw'
+      },1000)
+      $("#c3").animate({
+        'height':'100px'
+      },1000)
+      $("#c4").animate({
+        'height':'100px',
+        'top':'0vw'
+      },1000)
+      if(branch  == 1){
+        $("#s").animate({
+            'opacity':0
+          },4000)    
+      setTimeout(()=>{
+        document.getElementById("s").style.display = "none";
+        document.getElementById("s1").style.display = "block";
+        document.getElementById("s1").style.opacity = "1";
+                  },4000)
+              }else{
+                setTimeout(ani2,1000);
+              }
 }
-function ani2(json){
-    $("#result").animate({
-        'left':'70vw'
-    },0)
-    $("#result").animate({
-        'width':'10vw',
-        'left':'65vw'
-    },1000)
-    setTimeout(()=>{
-        document.getElementById("result").innerHTML = json[0];
-    document.getElementById("result").style.color = "black";
-    },1000)
-    
+function ani2(){
+    $("#c5").animate({
+        'opacity':0
+      },500)    
+      $("#c5").animate({
+        'opacity':1
+      },500)    
+    $("#c1").animate({
+        'width':'0vw',
+        'left':'100px'
+      },1000)
+      $("#c2").animate({
+        'width':'0vw',
+      },1000)
+      $("#c3").animate({
+        'height':'0vh',
+        'top':'100px'
+      },1000)
+      $("#c4").animate({
+        'height':'0vh'
+      },1000)
+      if(branch  == 1){
+        $("#s").animate({
+            'opacity':0
+          },2000)    
+          setTimeout(()=>{
+document.getElementById("s").style.display = "none";
+document.getElementById("s1").style.display = "block";
+document.getElementById("s1").style.opacity = "1";
+          },2000)
+      }else{
+      setTimeout(ani,1000)
+      }
 }
+
+
+
 </script>
 </body>
 </html>

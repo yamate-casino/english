@@ -192,3 +192,61 @@ font-size:20px;
                     .list .bt1:active{
                         background-color: rgb(13, 13, 86);
                       }
+
+    
+                      .s{
+                        position:relative;
+                        top:50vh;
+                        left:50%;
+                        
+                        margin-left:-50px;
+                        margin-top:-50px;
+                        width:100px;
+                        height:100px;
+                        font-family: Arial;
+                    }
+                    .c5{
+                        position:absolute;
+                        bottom:0;
+                        width:100px;
+                        height:100px;
+                        text-align: center;
+                        line-height: 100px;
+                        color:white;
+                        font-size:10px;
+                    }
+                      .s1{
+                        display: none;
+                        opacity: 0;
+                      }
+
+                      .c1{
+                        position:absolute;
+                        top:0;
+                        width:100px;
+                        
+                        border-top:2.5px solid white;
+                    }
+                    .c2{
+                        position:absolute;
+                        bottom:0;
+                        width:100px;
+                        
+                        
+                        border-top:2.5px solid white;
+                    }
+                    .c3{
+                        position:absolute;
+                        right:0;
+                        width:100px;
+                        
+                        border-right:2.5px solid white;
+                    }
+                    .c4{
+                        position:absolute;
+                        left:0;
+                        width:100px;
+                        
+                        border-left:2.5px solid white;
+                    }
+          
